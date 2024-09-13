@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  fullname  String
+  email     String   @unique
+  role      Role     @default(PARENT) // Either Parent or Teacher
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  students  Student[] @relation("ParentStudents") // Relationship for parent and their children
+  taught    Student[] @relation("TeacherStudents") // Relationship for teacher and their students
+}
+
+model Student {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  fullname  String
+  age       Int
+  class     String // Class or Grade Level
+  parentId  String  @db.Uuid
+  Parent    User    @relation(name: "ParentStudents", fields: [parentId], references: [id], onDelete: Cascade)
+  teacherId String? @db.Uuid
+  Teacher   User?   @relation(name: "TeacherStudents", fields: [teacherId], references: [id], onDelete: Cascade)
+
+  results   Result[]
+}
+
+model Result {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  subject   String
+  score     Int
+  date      DateTime @default(now())
+  studentId String   @db.Uuid
+  Student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+enum Role {
+  PARENT
+  TEACHER
+}
