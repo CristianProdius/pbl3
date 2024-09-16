@@ -1,0 +1,65 @@
+.page-wrapper {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #4b3ce2;
+  }
+  
+  .logo {
+    font-size: 24px;
+    color: white;
+  }
+  
+  .nav-menu {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .hero-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f6f7fb;
+  }
+  
+  .hero-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .hero-heading {
+    font-size: 48px;
+    color: #333;
+    margin: 40px 0;
+  }
+  
+  .sub-heading {
+    font-size: 24px;
+    color: #666;
+  }
+  
+  .call-to-action {
+    padding: 40px 20px;
+    background-color: white;
+    text-align: center;
+  }
+  
+  .call-to-action h2 {
+    font-size: 36px;
+    color: #4b3ce2;
+  }
+  
+  .call-to-action p {
+    font-size: 18px;
+    color: #333;
+  }
