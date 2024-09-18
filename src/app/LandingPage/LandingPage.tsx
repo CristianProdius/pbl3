@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import './LandingPage.css';
 
 
@@ -19,8 +20,7 @@ const LandingPage: React.FC = () => {
       </header>
 
       <section className="hero-section">
-        <img src="./assets/laptop.png" alt="Computer Mockup" className="hero-image" />
-        <h1 className="hero-heading">Let's build your next big idea</h1>
+        <img src="/images/laptop-good.png" alt="Computer Mockup" className="hero-image" />
         <h2 className="sub-heading">For B2B businesses with high-ticket services & products</h2>
       </section>
 
@@ -30,6 +30,15 @@ const LandingPage: React.FC = () => {
           From qualified leads to closed deals. Ken AI finds, engages, and converts your ideal clients, all on autopilot.
         </p>
       </section>
+
+      <div>
+        <img
+          src="/images/laptop-glasses.png"
+          width={500}
+          height={500}
+          alt="Picture of the author"
+        />
+      </div>
     </div>
   );
 };
